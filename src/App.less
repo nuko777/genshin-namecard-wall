@@ -43,6 +43,23 @@ body {
   gap: 14px;
 }
 
+.app__github {
+  margin-left: auto;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  transition: color var(--t-fast), background var(--t-fast);
+}
+
+.app__github:hover {
+  color: var(--ink);
+  background: var(--paper-subtle);
+}
+
 .app__header::before {
   content: '';
   width: 10px;
