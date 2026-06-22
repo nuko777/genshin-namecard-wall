@@ -10,14 +10,15 @@ export function useNamecards() {
     element: '',
     search: '',
     hideDisabled: true,
+    enableBattlepass: false,
   });
 
   useEffect(() => {
     const ac = new AbortController();
-    fetch('/data.json', { signal: ac.signal })
-      .then(r => r.json())
-      .then((data: Namecard[]) => {
-        setNamecards(data);
+    fetch('/namecards.json', { signal: ac.signal })
+      .then(r => r.json() as Promise<Namecard[]>)
+      .then(cards => {
+        setNamecards(cards);
         setLoading(false);
       })
       .catch(e => {
@@ -28,8 +29,15 @@ export function useNamecards() {
     return () => ac.abort();
   }, []);
 
+  const colorMap = useMemo(() => {
+    const m = new Map<string, Namecard>();
+    namecards.forEach(c => m.set(c.hash, c));
+    return m;
+  }, [namecards]);
+
   const filteredNamecards = useMemo<Namecard[]>(() => {
     return namecards.filter(c => {
+      if (!filter.enableBattlepass && c.theme === 'battlepass') return false;
       if (filter.theme && c.theme !== filter.theme) return false;
       if (filter.region && c.region !== filter.region) return false;
       if (filter.element && c.element !== filter.element) return false;
@@ -38,6 +46,17 @@ export function useNamecards() {
     });
   }, [namecards, filter]);
 
+  // 匹配池：受分类筛选影响，但不受搜索影响，避免按名称查找时预览整盘洗牌。
+  const matchPool = useMemo<Namecard[]>(() => {
+    return namecards.filter(c => {
+      if (!filter.enableBattlepass && c.theme === 'battlepass') return false;
+      if (filter.theme && c.theme !== filter.theme) return false;
+      if (filter.region && c.region !== filter.region) return false;
+      if (filter.element && c.element !== filter.element) return false;
+      return true;
+    });
+  }, [namecards, filter.enableBattlepass, filter.theme, filter.region, filter.element]);
+
   const updateFilter = useCallback(
     (partial: Partial<FilterState>) => {
       setFilter(prev => ({ ...prev, ...partial }));
@@ -45,5 +64,5 @@ export function useNamecards() {
     []
   );
 
-  return { namecards, filteredNamecards, loading, filter, updateFilter };
+  return { namecards, colorMap, filteredNamecards, matchPool, loading, filter, updateFilter };
 }

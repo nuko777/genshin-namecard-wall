@@ -1,229 +1,316 @@
-import { hexToRGB, interpolateRGB, colorDistance } from './color';
-import type { GradientDirection } from '../types';
+import type { GradientDirection, Namecard } from '../types';
+import { hslColor, hslDistance, hueDiffDeg, type HSLColor } from './color';
+import { computeTargets } from './targets';
+import { NEIGHBOR_PAIRS, TOTAL, getSlotWeight } from './grid';
+import { hasThemeColors, prepareThemeColors, primaryTheme, uniqueByHash, bestThemeDistance } from './themeColors';
 
-const GRID_COLS = 4;
-const GRID_ROWS = 4;
-const TOTAL = GRID_COLS * GRID_ROWS; // 16
-
-// ── Cost normalizers (derived from dataset statistics) ──
-// Typical color distance between random namecards: avg=163, p50=159
-const GRAD_SCALE = 160;
-// Variance distribution: avg=54, std=25, p50=48
-const VAR_SCALE = 50;
-
-// ── Cost weights (applied after normalization to ~0-1 scale) ──
-const W_GRADIENT = 1.0;   // gradient target match
-const W_VARIANCE = 1.2;   // penalty for high-variance cards (uniform preferred)
-const W_NEIGHBOR = 1.0;   // smooth transitions between adjacent card edges
-
-// ── Gradient target generation ──
-
-function computeTargets(direction: GradientDirection): number[] {
-  const ts: number[] = [];
-  for (let r = 0; r < GRID_ROWS; r++) {
-    for (let c = 0; c < GRID_COLS; c++) {
-      let t: number;
-      if (direction === 'tl-br') {
-        t = (r + c) / (GRID_ROWS + GRID_COLS - 2); // (0,0)→0, (3,3)→1
-      } else {
-        t = (r + (GRID_COLS - 1 - c)) / (GRID_ROWS + GRID_COLS - 2);
-      }
-      ts.push(clamp(t, 0, 1));
-    }
-  }
-  return ts;
-}
-
-function clamp(v: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, v));
-}
-
-export function generateTargetColors(
-  color1: string,
-  color2: string,
-  direction: GradientDirection
-): [number, number, number][] {
-  const rgb1 = hexToRGB(color1);
-  const rgb2 = hexToRGB(color2);
-  return computeTargets(direction).map(t => interpolateRGB(rgb1, rgb2, t));
-}
-
-// ── Candidate type ──
+type ThemeColor = Namecard['themeColors'][number];
 
 export interface Candidate {
   hash: string;
-  avgColor: number[];
-  zones: number[][];   // 6 zones, 3×2 row-major: [0][1][2] / [3][4][5]
-  variance: number;
+  themeColors: ThemeColor[];
 }
 
-// ── Neighbor edge matching ──
+export type LockedSlots = Partial<Record<number, string>>;
 
-/**
- * Zone layout (3 cols × 2 rows):
- *   ┌───┬───┬───┐
- *   │ 0 │ 1 │ 2 │  top row
- *   ├───┼───┼───┤
- *   │ 3 │ 4 │ 5 │  bottom row
- *   └───┴───┴───┘
- */
+export { getSlotWeight } from './grid';
 
-/** Color distance between bottom edge of `above` and top edge of `current` */
-function verticalEdgeCost(above: Candidate, current: Candidate): number {
-  // above bottom zones [3,4,5] ↔ current top zones [0,1,2]
-  return (
-    colorDistance(above.zones[3], current.zones[0]) +
-    colorDistance(above.zones[4], current.zones[1]) +
-    colorDistance(above.zones[5], current.zones[2])
-  ) / 3;
+// 评分口径常量，必须与 docs/specs/matching-score.cjs 完全一致
+const CHROMA_GATE = 0.04;
+const MASS_PENALTY_WEIGHT = 0.035;
+const W_MONO = 40;
+const W_GRADIENT = 50;
+const W_NEIGHBOR = 22;
+const W_DIAG_COHESION = 30;
+const W_DIAG_HUE = 20;
+const W_PURITY = 16;
+
+// 优化器参数
+const RESTARTS = 8;        // 随机重启次数（含 1 次贪心初始化）
+const HILL_ITERATIONS = 400;
+const RNG_SEED = 0x9e3779b9;
+
+/** 候选卡的评分相关预计算量。 */
+interface Prepared {
+  hash: string;
+  prim: HSLColor | null;
+  oklch: ThemeColor['oklch'] | null;
+  gd: number[]; // 到每条对角线目标色的最佳主题色加权距离
+  purity: number;
 }
 
-/** Color distance between right edge of `left` and left edge of `current` */
-function horizontalEdgeCost(left: Candidate, current: Candidate): number {
-  // left right zones [2,5] ↔ current left zones [0,3]
-  return (
-    colorDistance(left.zones[2], current.zones[0]) +
-    colorDistance(left.zones[5], current.zones[3])
-  ) / 2;
+/** 当前方向下的几何信息：每槽对角线权重 + 每条对角线的槽位分组。 */
+interface Geometry {
+  slotWeight: number[];
+  diagGroups: number[][];
 }
 
-// ── Matching ──
+function buildGeometry(direction: GradientDirection): Geometry {
+  const slotWeight = Array.from({ length: TOTAL }, (_, slot) => getSlotWeight(slot, direction));
+  const count = Math.max(...slotWeight) + 1;
+  const diagGroups: number[][] = Array.from({ length: count }, () => []);
+  for (let slot = 0; slot < TOTAL; slot++) diagGroups[slotWeight[slot]].push(slot);
+  return { slotWeight, diagGroups };
+}
 
-type SlotAssignment = { hash: string; candidate: Candidate } | null;
+/** 确定性 PRNG，保证同输入稳定可复现。 */
+function mulberry32(seed: number): () => number {
+  let a = seed;
+  return function () {
+    a |= 0;
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
 
-/**
- * Greedy neighbor-aware matching with 2-opt improvement.
- *
- * Processes the 4×4 grid in row-major order. For each slot, scores every
- * remaining candidate by:
- *   1. Gradient fit (overall color vs target)
- *   2. Variance penalty (uniform cards preferred)
- *   3. Neighbor edge smoothness (match above & left edges)
- *
- * Then runs pairwise swap improvement to escape local minima.
- */
-export function solveMinimumCostMatching(
-  targetColors: [number, number, number][],
-  candidates: Candidate[]
-): (string | null)[] {
-  const n = candidates.length;
-  if (n === 0) return Array(TOTAL).fill(null);
-  if (n < TOTAL) return candidates.map(c => c.hash); // Not enough — just take all
+function prepareCandidate(cand: Candidate, targets: HSLColor[]): Prepared {
+  const themes = prepareThemeColors(cand);
+  const primary = primaryTheme(cand);
+  const prim = primary ? hslColor(primary.hsl) : null;
+  const oklch = primary ? primary.oklch : null;
+  const gd = targets.map(target => bestThemeDistance(themes, target, { massPenaltyWeight: MASS_PENALTY_WEIGHT }));
+  const total = themes.reduce((sum, theme) => sum + theme.ratio, 0) || 1;
+  const mainRatio = themes.length ? themes[0].ratio / total : 0;
+  const entropy = themes.reduce((sum, theme) => {
+    const p = theme.ratio / total;
+    return sum + (p > 0 ? -p * Math.log2(p) : 0);
+  }, 0);
+  const spread = themes.slice(1).reduce((sum, theme) => sum + hslDistance(themes[0].hsl, theme.hsl) * theme.ratio, 0);
+  const purity = (1 - mainRatio) * 0.9 + entropy * 0.25 + spread * 2.2;
+  return { hash: cand.hash, prim, oklch, gd, purity };
+}
 
-  // Build a quick lookup
-  const candMap = new Map<string, Candidate>();
-  candidates.forEach(c => candMap.set(c.hash, c));
+/** 计算 16 格布局的 quality，口径与 matching-score.cjs 完全一致。 */
+function quality(grid: Prepared[], targets: HSLColor[], geom: Geometry): number {
+  const { slotWeight, diagGroups } = geom;
 
-  const used = new Set<string>();
-  const grid: SlotAssignment[] = Array(TOTAL).fill(null);
+  let gradient = 0;
+  for (let i = 0; i < TOTAL; i++) gradient += grid[i].gd[slotWeight[i]];
+  gradient /= TOTAL;
 
-  // ── Greedy row-major assignment ──
-  for (let slot = 0; slot < TOTAL; slot++) {
-    const r = Math.floor(slot / GRID_COLS);
-    const c = slot % GRID_COLS;
-    const target = targetColors[slot];
-
-    const above = r > 0 ? grid[slot - GRID_COLS] : null;
-    const left = c > 0 ? grid[slot - 1] : null;
-
-    let bestHash = '';
-    let bestCost = Infinity;
-
-    for (const cand of candidates) {
-      if (used.has(cand.hash)) continue;
-
-      // Gradient fit (normalized)
-      const gradCost = colorDistance(target, cand.avgColor) / GRAD_SCALE;
-
-      // Variance penalty (normalized)
-      const varCost = cand.variance / VAR_SCALE;
-
-      // Neighbor edge cost (normalized)
-      let neighborCost = 0;
-      if (above) {
-        neighborCost += verticalEdgeCost(above.candidate, cand);
-      }
-      if (left) {
-        neighborCost += horizontalEdgeCost(left.candidate, cand);
-      }
-      if (above || left) {
-        neighborCost /= ((above ? 1 : 0) + (left ? 1 : 0)) * GRAD_SCALE;
-      }
-
-      const totalCost = gradCost * W_GRADIENT + varCost * W_VARIANCE + neighborCost * W_NEIGHBOR;
-
-      if (totalCost < bestCost) {
-        bestCost = totalCost;
-        bestHash = cand.hash;
-      }
-    }
-
-    if (bestHash) {
-      used.add(bestHash);
-      grid[slot] = { hash: bestHash, candidate: candMap.get(bestHash)! };
-    }
+  let neighbor = 0;
+  let neighborCount = 0;
+  for (const [x, y] of NEIGHBOR_PAIRS) {
+    if (!grid[x].prim || !grid[y].prim) continue;
+    neighbor += hslDistance(grid[x].prim!, grid[y].prim!);
+    neighborCount++;
   }
+  neighbor = neighborCount ? neighbor / neighborCount : 0;
 
-  // ── 2-opt pairwise swap improvement (bounded iterations) ──
-  let improved = true;
-  let iter = 0;
-  const MAX_ITER = 200;
-  while (improved && iter < MAX_ITER) {
-    improved = false;
-    iter++;
-    for (let s1 = 0; s1 < TOTAL; s1++) {
-      for (let s2 = s1 + 1; s2 < TOTAL; s2++) {
-        if (!grid[s1] || !grid[s2]) continue;
-
-        const costBefore = slotCost(grid, s1, targetColors) + slotCost(grid, s2, targetColors);
-
-        // Swap
-        [grid[s1], grid[s2]] = [grid[s2], grid[s1]];
-
-        const costAfter = slotCost(grid, s1, targetColors) + slotCost(grid, s2, targetColors);
-
-        if (costAfter < costBefore - 1e-6) {
-          improved = true;
-        } else {
-          // Revert
-          [grid[s1], grid[s2]] = [grid[s2], grid[s1]];
+  let cohesion = 0;
+  let cohesionCount = 0;
+  let hueSpread = 0;
+  let hueSpreadCount = 0;
+  for (const group of diagGroups) {
+    for (let a = 0; a < group.length; a++) {
+      for (let b = a + 1; b < group.length; b++) {
+        const ca = grid[group[a]];
+        const cb = grid[group[b]];
+        if (ca.prim && cb.prim) {
+          cohesion += hslDistance(ca.prim, cb.prim);
+          cohesionCount++;
+        }
+        if (ca.oklch && cb.oklch && ca.oklch[1] >= CHROMA_GATE && cb.oklch[1] >= CHROMA_GATE) {
+          hueSpread += hueDiffDeg(ca.oklch[2], cb.oklch[2]);
+          hueSpreadCount++;
         }
       }
     }
   }
+  cohesion = cohesionCount ? cohesion / cohesionCount : 0;
+  hueSpread = hueSpreadCount ? hueSpread / hueSpreadCount : 0;
 
-  return grid.map(g => g?.hash ?? null);
+  // 色相锚定：每格主色与该格目标色的平均绝对色相偏差，归一为 [-1,1]
+  let hueDevSum = 0;
+  let hueDevCount = 0;
+  for (let i = 0; i < TOTAL; i++) {
+    if (!grid[i].prim) continue;
+    hueDevSum += hueDiffDeg(grid[i].prim!.h, targets[slotWeight[i]].h);
+    hueDevCount++;
+  }
+  const anchor = Math.max(-1, 1 - (hueDevCount ? hueDevSum / hueDevCount : 90) / 90);
+
+  let purity = 0;
+  for (let i = 0; i < TOTAL; i++) purity += grid[i].purity;
+  purity /= TOTAL;
+
+  return (
+    100 +
+    W_MONO * anchor -
+    W_GRADIENT * gradient -
+    W_NEIGHBOR * neighbor -
+    W_DIAG_COHESION * cohesion -
+    W_DIAG_HUE * (hueSpread / 90) -
+    W_PURITY * purity
+  );
 }
 
-/** Compute total cost for a single slot within the current grid context */
-function slotCost(
-  grid: SlotAssignment[],
-  slot: number,
-  targetColors: [number, number, number][]
+/**
+ * 贪心初始化：按对角线权重顺序，每个自由槽取目标距离最小且未用的卡。
+ * 锁定槽直接放入对应卡，并占用其 hash。
+ */
+function greedyInit(prepared: Prepared[], geom: Geometry, locked: Map<number, Prepared>): Prepared[] {
+  const grid = new Array<Prepared>(TOTAL);
+  const used = new Set<string>();
+  for (const [slot, card] of locked) {
+    grid[slot] = card;
+    used.add(card.hash);
+  }
+  const freeSlots = Array.from({ length: TOTAL }, (_, slot) => slot)
+    .filter(slot => !locked.has(slot))
+    .sort((a, b) => geom.slotWeight[a] - geom.slotWeight[b]);
+  for (const slot of freeSlots) {
+    let best: Prepared | null = null;
+    let bestCost = Infinity;
+    for (const card of prepared) {
+      if (used.has(card.hash)) continue;
+      const cost = card.gd[geom.slotWeight[slot]];
+      if (cost < bestCost) {
+        bestCost = cost;
+        best = card;
+      }
+    }
+    // 候选耗尽（候选不足 16）时留空槽，由调用方兜底为 null
+    if (!best) break;
+    grid[slot] = best;
+    used.add(best.hash);
+  }
+  return grid;
+}
+
+/** 随机初始化：锁定槽固定，自由槽从未锁定候选中随机取。 */
+function randomInit(prepared: Prepared[], locked: Map<number, Prepared>, rng: () => number): Prepared[] {
+  const grid = new Array<Prepared>(TOTAL);
+  const used = new Set<string>();
+  for (const [slot, card] of locked) {
+    grid[slot] = card;
+    used.add(card.hash);
+  }
+  const freeSlots = Array.from({ length: TOTAL }, (_, slot) => slot).filter(slot => !locked.has(slot));
+  const free = prepared.filter(card => !used.has(card.hash));
+  for (let i = free.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [free[i], free[j]] = [free[j], free[i]];
+  }
+  freeSlots.forEach((slot, i) => {
+    grid[slot] = free[i];
+  });
+  return grid;
+}
+
+/**
+ * 爬山：交换两个自由槽 + 用池中卡替换某个自由槽，最大化 quality。
+ * 锁定槽不参与交换/替换；就地修改 grid/pool，返回最终分。
+ */
+function hillClimb(
+  grid: Prepared[],
+  pool: Prepared[],
+  targets: HSLColor[],
+  geom: Geometry,
+  lockedSet: Set<number>
 ): number {
-  const g = grid[slot];
-  if (!g) return Infinity;
+  const freeSlots = Array.from({ length: TOTAL }, (_, slot) => slot).filter(slot => !lockedSet.has(slot));
+  let current = quality(grid, targets, geom);
+  const EPS = 1e-9;
+  for (let iteration = 0; iteration < HILL_ITERATIONS; iteration++) {
+    let bestDelta = EPS;
+    let move: { type: 'swap'; i: number; j: number; q: number } | { type: 'replace'; i: number; p: number; q: number } | null = null;
 
-  const r = Math.floor(slot / GRID_COLS);
-  const c = slot % GRID_COLS;
+    for (let ai = 0; ai < freeSlots.length; ai++) {
+      for (let bi = ai + 1; bi < freeSlots.length; bi++) {
+        const i = freeSlots[ai];
+        const j = freeSlots[bi];
+        const tmp = grid[i];
+        grid[i] = grid[j];
+        grid[j] = tmp;
+        const q = quality(grid, targets, geom);
+        grid[j] = grid[i];
+        grid[i] = tmp;
+        if (q - current > bestDelta) {
+          bestDelta = q - current;
+          move = { type: 'swap', i, j, q };
+        }
+      }
+    }
 
-  const gradCost = colorDistance(targetColors[slot], g.candidate.avgColor) / GRAD_SCALE;
-  const varCost = g.candidate.variance / VAR_SCALE;
+    for (const i of freeSlots) {
+      const orig = grid[i];
+      for (let p = 0; p < pool.length; p++) {
+        grid[i] = pool[p];
+        const q = quality(grid, targets, geom);
+        if (q - current > bestDelta) {
+          bestDelta = q - current;
+          move = { type: 'replace', i, p, q };
+        }
+      }
+      grid[i] = orig;
+    }
 
-  let neighborCost = 0;
-  let nCount = 0;
+    if (!move) break;
+    if (move.type === 'swap') {
+      const tmp = grid[move.i];
+      grid[move.i] = grid[move.j];
+      grid[move.j] = tmp;
+    } else {
+      const out = grid[move.i];
+      grid[move.i] = pool[move.p];
+      pool[move.p] = out;
+    }
+    current = move.q;
+  }
+  return current;
+}
 
-  const above = r > 0 ? grid[slot - GRID_COLS] : null;
-  const left = c > 0 ? grid[slot - 1] : null;
-  const below = r < GRID_ROWS - 1 ? grid[slot + GRID_COLS] : null;
-  const right = c < GRID_COLS - 1 ? grid[slot + 1] : null;
+export function solveDiagonalMatching(
+  startColorHex: string,
+  endColorHex: string,
+  direction: GradientDirection,
+  candidates: Candidate[],
+  lockedSlots: LockedSlots = {}
+): (string | null)[] {
+  if (candidates.length === 0) return Array(TOTAL).fill(null);
 
-  if (above) { neighborCost += verticalEdgeCost(above.candidate, g.candidate); nCount++; }
-  if (left)  { neighborCost += horizontalEdgeCost(left.candidate, g.candidate); nCount++; }
-  if (below) { neighborCost += verticalEdgeCost(g.candidate, below.candidate); nCount++; }
-  if (right) { neighborCost += horizontalEdgeCost(g.candidate, right.candidate); nCount++; }
+  const targets = computeTargets(startColorHex, endColorHex);
+  const geom = buildGeometry(direction);
+  const unique = uniqueByHash(candidates.filter(hasThemeColors));
+  if (unique.length === 0) return Array(TOTAL).fill(null);
 
-  if (nCount > 0) neighborCost /= nCount * GRAD_SCALE;
+  const prepared = unique.map(cand => prepareCandidate(cand, targets));
+  const prepMap = new Map(prepared.map(p => [p.hash, p]));
 
-  return gradCost * W_GRADIENT + varCost * W_VARIANCE + neighborCost * W_NEIGHBOR;
+  // 校验锁定槽：槽位合法、hash 存在于候选、去重
+  const locked = new Map<number, Prepared>();
+  const lockedHashes = new Set<string>();
+  for (const [slotKey, hash] of Object.entries(lockedSlots)) {
+    const slot = Number(slotKey);
+    if (!Number.isInteger(slot) || slot < 0 || slot >= TOTAL) continue;
+    if (!hash || lockedHashes.has(hash)) continue;
+    const card = prepMap.get(hash);
+    if (!card) continue;
+    locked.set(slot, card);
+    lockedHashes.add(hash);
+  }
+
+  // 候选不足时退化为单次贪心
+  if (prepared.length < TOTAL) {
+    return greedyInit(prepared, geom, locked).slice(0, TOTAL).map(card => (card ? card.hash : null));
+  }
+
+  const lockedSet = new Set(locked.keys());
+  const rng = mulberry32(RNG_SEED);
+  let bestGrid: (string | null)[] | null = null;
+  let bestQuality = -Infinity;
+  for (let restart = 0; restart < RESTARTS; restart++) {
+    const grid = restart === 0 ? greedyInit(prepared, geom, locked) : randomInit(prepared, locked, rng);
+    const inGrid = new Set(grid.map(card => card.hash));
+    const pool = prepared.filter(card => !inGrid.has(card.hash));
+    const q = hillClimb(grid, pool, targets, geom, lockedSet);
+    if (q > bestQuality) {
+      bestQuality = q;
+      bestGrid = grid.map(card => card.hash);
+    }
+  }
+  return bestGrid!;
 }

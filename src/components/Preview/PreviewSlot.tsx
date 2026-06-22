@@ -4,7 +4,7 @@ import type { Namecard } from '../../types';
 interface PreviewSlotProps {
   index: number;
   hash: string | null;
-  namecardMap: Map<string, Namecard>;
+  colorMap: Map<string, Namecard>;
   didDropRef: React.MutableRefObject<boolean>;
   onDrop: (index: number, hash: string) => void;
   onSwap: (a: number, b: number) => void;
@@ -14,13 +14,19 @@ interface PreviewSlotProps {
 export default function PreviewSlot({
   index,
   hash,
-  namecardMap,
+  colorMap,
   didDropRef,
   onDrop,
   onSwap,
   onRemove,
 }: PreviewSlotProps) {
-  const card = hash ? namecardMap.get(hash) ?? null : null;
+  const card = hash ? colorMap.get(hash) ?? null : null;
+  const primaryThemeColor = card?.themeColors?.[0] ?? null;
+  const title = card
+    ? primaryThemeColor
+      ? `${card.name} · ${primaryThemeColor.hex} · 主题色占比 ${Math.round(primaryThemeColor.ratio * 100)}%（拖拽交换 / 拖出删除）`
+      : `${card.name} · 无主题色数据（拖拽交换 / 拖出删除）`
+    : '';
   const [dragOver, setDragOver] = useState(false);
 
   // Reset shared drop flag on each new drag
@@ -82,7 +88,7 @@ export default function PreviewSlot({
         <img
           src={`/cards/${card.hash}.png`}
           alt={card.name}
-          title={`${card.name}（拖拽交换 / 拖出删除）`}
+          title={title}
         />
       ) : (
         <span className="preview-slot__index">{index + 1}</span>

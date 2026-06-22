@@ -1,68 +1,90 @@
-import { useState, useCallback } from 'react';
-import { generateTargetColors, solveMinimumCostMatching } from '../utils/gradient';
-import type { Candidate } from '../utils/gradient';
+import { useState, useCallback, useRef, useEffect } from 'react';
+import { solveDiagonalMatching } from '../utils/gradient';
+import type { Candidate, LockedSlots } from '../utils/gradient';
 import type { GradientPreset, GradientDirection } from '../types';
 
 const PRESETS: GradientPreset[] = [
-  // ── 原神元素主题（高饱和） ──
-  { name: '蒙德·风',   color1: '#00e5b8', color2: '#00695c' },
-  { name: '璃月·岩',   color1: '#ffd54f', color2: '#e65100' },
-  { name: '稻妻·雷',   color1: '#ea80fc', color2: '#6a1b9a' },
-  { name: '须弥·草',   color1: '#69f0ae', color2: '#1b5e20' },
-  { name: '枫丹·水',   color1: '#40c4ff', color2: '#0d47a1' },
-  { name: '纳塔·火',   color1: '#ff6e40', color2: '#bf360c' },
-  { name: '至冬·冰',   color1: '#80d8ff', color2: '#004d73' },
-  // ── 经典渐变 ──
-  { name: '落日橘',    color1: '#ff7e5f', color2: '#feb47b' },
-  { name: '深海蓝',    color1: '#2193b0', color2: '#6dd5ed' },
-  { name: '紫罗兰梦',  color1: '#8e2de2', color2: '#4a00e0' },
-  { name: '樱桃红',    color1: '#eb3349', color2: '#f45c43' },
-  { name: '极光绿',    color1: '#11998e', color2: '#38ef7d' },
-  { name: '蓝空',     color1: '#56ccf2', color2: '#2f80ed' },
-  { name: '紫爱',     color1: '#cc2b5e', color2: '#753a88' },
-  { name: '电光紫',    color1: '#c471ed', color2: '#f64f59' },
-  { name: '暗夜蓝',    color1: '#0f2027', color2: '#2c5364' },
-  { name: '蜜桃粉',    color1: '#ff9a9e', color2: '#fecfef' },
-  { name: '薄荷绿',    color1: '#00b4db', color2: '#0083b0' },
-  { name: '灼热橙',    color1: '#ff416c', color2: '#ff4b2b' },
-  { name: '酸橙绿',    color1: '#56ab2f', color2: '#a8e063' },
-  { name: '霜蓝',     color1: '#000428', color2: '#004e92' },
-  { name: '粉紫',     color1: '#ee9ca7', color2: '#ffdde1' },
-  { name: '墨绿金',    color1: '#1e9600', color2: '#fff200' },
-  { name: '深空紫',    color1: '#654ea3', color2: '#eaafc8' },
-  { name: '绯红',     color1: '#ed213a', color2: '#93291e' },
-  { name: '碧波',     color1: '#00c6ff', color2: '#0072ff' },
-  { name: '沙橙',     color1: '#fdc830', color2: '#f37335' },
-  { name: '静夜',     color1: '#0f0c29', color2: '#302b63' },
+  // ── 6 个预设：沿 HSL 色相环每 60° 取一对，中低饱和度 (S≈45%, L≈62%) ──
+  { name: '朝霞流金', color1: '#ca7272', color2: '#caca72' }, // 红→黄  H0   → H60
+  { name: '金穗新蕖', color1: '#caca72', color2: '#72ca72' }, // 黄→绿  H60  → H120
+  { name: '林深见海', color1: '#72ca72', color2: '#72caca' }, // 绿→青  H120 → H180
+  { name: '碧波映天', color1: '#72caca', color2: '#7272ca' }, // 青→蓝  H180 → H240
+  { name: '暮云凝紫', color1: '#7272ca', color2: '#ca72ca' }, // 蓝→紫  H240 → H300
+  { name: '紫霞酡红', color1: '#ca72ca', color2: '#ca7272' }, // 紫→红  H300 → H360
 ];
 
-export function useGradient() {
-  const [color1, setColor1] = useState('#7ed6cf');
-  const [color2, setColor2] = useState('#2c5f6c');
-  const [direction, setDirection] = useState<GradientDirection>('tl-br');
+const DEFAULT_PRESET = PRESETS[0];
+// 拾色器拖动去抖延迟（毫秒）：显示色即时更新，重排在停手后触发
+const COLOR_COMMIT_DELAY = 250;
 
-  /** Generate matching. Optional c1/c2 overrides avoid stale closure when
-   *  generating immediately after a preset change (React batches state). */
+export function useGradient() {
+  // 显示色：渐变条与拾色器即时跟随
+  const [color1, setColor1] = useState(DEFAULT_PRESET.color1);
+  const [color2, setColor2] = useState(DEFAULT_PRESET.color2);
+  // 提交色：实际喂给生成算法，拾色器变更时去抖滞后于显示色
+  const [genColor1, setGenColor1] = useState(DEFAULT_PRESET.color1);
+  const [genColor2, setGenColor2] = useState(DEFAULT_PRESET.color2);
+  const [direction, setDirection] = useState<GradientDirection>('tl-br');
+  const commitTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const cancelCommit = useCallback(() => {
+    if (commitTimerRef.current) {
+      clearTimeout(commitTimerRef.current);
+      commitTimerRef.current = null;
+    }
+  }, []);
+
+  // 卸载时清理待触发的去抖定时器
+  useEffect(() => cancelCommit, [cancelCommit]);
+
+  /** 拾色器拖动：显示色即时更新，提交色去抖，避免高频重排。 */
+  const changeColor1 = useCallback((color: string) => {
+    setColor1(color);
+    cancelCommit();
+    commitTimerRef.current = setTimeout(() => setGenColor1(color), COLOR_COMMIT_DELAY);
+  }, [cancelCommit]);
+
+  const changeColor2 = useCallback((color: string) => {
+    setColor2(color);
+    cancelCommit();
+    commitTimerRef.current = setTimeout(() => setGenColor2(color), COLOR_COMMIT_DELAY);
+  }, [cancelCommit]);
+
+  /** 即时提交起点色（预设/填充模式端点等离散操作，不去抖）。 */
+  const commitColor1 = useCallback((color: string) => {
+    cancelCommit();
+    setColor1(color);
+    setGenColor1(color);
+  }, [cancelCommit]);
+
+  const commitColor2 = useCallback((color: string) => {
+    cancelCommit();
+    setColor2(color);
+    setGenColor2(color);
+  }, [cancelCommit]);
+
+  /** 用当前提交色与方向匹配名片，返回 16 槽位 hash。 */
   const generate = useCallback(
-    (candidates: Candidate[], c1?: string, c2?: string) => {
-      const targets = generateTargetColors(c1 ?? color1, c2 ?? color2, direction);
-      return solveMinimumCostMatching(targets, candidates);
+    (candidates: Candidate[], lockedSlots?: LockedSlots) => {
+      return solveDiagonalMatching(genColor1, genColor2, direction, candidates, lockedSlots);
     },
-    [color1, color2, direction]
+    [genColor1, genColor2, direction]
   );
 
   const applyPreset = useCallback((preset: GradientPreset) => {
-    setColor1(preset.color1);
-    setColor2(preset.color2);
-  }, []);
+    commitColor1(preset.color1);
+    commitColor2(preset.color2);
+  }, [commitColor1, commitColor2]);
 
   return {
     color1,
     color2,
     direction,
     presets: PRESETS,
-    setColor1,
-    setColor2,
+    changeColor1,
+    changeColor2,
+    commitColor1,
+    commitColor2,
     setDirection,
     generate,
     applyPreset,

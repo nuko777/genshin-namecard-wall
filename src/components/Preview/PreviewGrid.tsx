@@ -4,7 +4,7 @@ import type { Namecard } from '../../types';
 
 interface PreviewGridProps {
   slots: (string | null)[];
-  namecardMap: Map<string, Namecard>;
+  colorMap: Map<string, Namecard>;
   onDrop: (index: number, hash: string) => void;
   onSwap: (a: number, b: number) => void;
   onRemove: (index: number) => void;
@@ -12,7 +12,7 @@ interface PreviewGridProps {
 
 export default function PreviewGrid({
   slots,
-  namecardMap,
+  colorMap,
   onDrop,
   onSwap,
   onRemove,
@@ -31,7 +31,7 @@ export default function PreviewGrid({
           key={`slot-${i}`}
           index={i}
           hash={hash}
-          namecardMap={namecardMap}
+          colorMap={colorMap}
           didDropRef={didDropRef}
           onDrop={onDrop}
           onSwap={onSwap}

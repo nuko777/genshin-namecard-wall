@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 const STORAGE_KEY = 'genshin_namewall_disabled';
 
@@ -6,26 +6,28 @@ export function useDisabled() {
   const [disabledSet, setDisabledSet] = useState<Set<string>>(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? new Set(JSON.parse(raw)) : new Set();
+      if (!raw) return new Set();
+      const parsed = JSON.parse(raw);
+      // 仅接纳字符串项，防止非法存储污染集合
+      return new Set(Array.isArray(parsed) ? parsed.filter((v): v is string => typeof v === 'string') : []);
     } catch {
       return new Set();
     }
   });
 
-  const isDisabled = useCallback(
-    (hash: string) => disabledSet.has(hash),
-    [disabledSet]
-  );
+  // 持久化副作用置于 updater 外，集合变化时同步写回 localStorage
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...disabledSet]));
+  }, [disabledSet]);
 
   const toggle = useCallback((hash: string) => {
     setDisabledSet(prev => {
       const next = new Set(prev);
       if (next.has(hash)) next.delete(hash);
       else next.add(hash);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify([...next]));
       return next;
     });
   }, []);
 
-  return { disabledSet, isDisabled, toggle };
+  return { disabledSet, toggle };
 }

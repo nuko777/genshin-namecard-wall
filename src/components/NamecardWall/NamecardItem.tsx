@@ -14,6 +14,7 @@ export default memo(function NamecardItem({
   onOpen,
   onToggle,
 }: NamecardItemProps) {
+  const labelColor = card.themeColors[0]?.hex;
   const handleClick = useCallback(() => onOpen(card.hash), [onOpen, card.hash]);
   const handleContextMenu = useCallback(
     (e: React.MouseEvent) => {
@@ -40,7 +41,9 @@ export default memo(function NamecardItem({
       title={card.name}
     >
       <img src={`/cards/${card.hash}.png`} alt={card.name} loading="lazy" />
-      <span className="namecard-thumb__label">{card.name}</span>
+      <span className="namecard-thumb__label" style={labelColor ? { color: labelColor } : undefined}>
+        {card.name}
+      </span>
     </div>
   );
 });

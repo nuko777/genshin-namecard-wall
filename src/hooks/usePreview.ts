@@ -1,9 +1,8 @@
 import { useState, useCallback } from 'react';
-
-const GRID_SIZE = 16;
+import { TOTAL } from '../utils/grid';
 
 export function usePreview() {
-  const [slots, setSlots] = useState<(string | null)[]>(() => Array(GRID_SIZE).fill(null));
+  const [slots, setSlots] = useState<(string | null)[]>(() => Array(TOTAL).fill(null));
 
   const dropIntoSlot = useCallback((targetIndex: number, hash: string) => {
     setSlots(prev => {
@@ -22,13 +21,11 @@ export function usePreview() {
   }, []);
 
   const fillSlots = useCallback((hashes: (string | null)[]) => {
-    setSlots(prev => {
-      const next = [...prev];
-      for (let i = 0; i < Math.min(hashes.length, GRID_SIZE); i++) {
-        next[i] = hashes[i] || null;
-      }
-      return next;
-    });
+    const next: (string | null)[] = Array(TOTAL).fill(null);
+    for (let i = 0; i < Math.min(hashes.length, TOTAL); i++) {
+      next[i] = hashes[i] ?? null;
+    }
+    setSlots(next);
   }, []);
 
   const removeSlot = useCallback((index: number) => {
@@ -40,7 +37,7 @@ export function usePreview() {
   }, []);
 
   const clearSlots = useCallback(() => {
-    setSlots(Array(GRID_SIZE).fill(null));
+    setSlots(Array(TOTAL).fill(null));
   }, []);
 
   return { slots, dropIntoSlot, swapSlots, fillSlots, clearSlots, removeSlot };

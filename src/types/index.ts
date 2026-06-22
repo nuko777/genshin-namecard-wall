@@ -1,19 +1,19 @@
+export type NamecardTheme = '' | 'character' | 'achievement' | 'region' | 'event' | 'battlepass';
+
 export interface Namecard {
   name: string;
   hash: string;
-  theme: 'character' | 'achievement' | 'region' | 'event' | 'other';
+  theme: NamecardTheme;
   region: string;
   element: string;
-  /** Overall average [R, G, B] (deprecated by zones; kept for compat) */
-  avgColor: number[];
-  /** 6 zone average colors, 3 cols × 2 rows, row-major:
-   *  [0][1][2]  (top row)
-   *  [3][4][5]  (bottom row) */
-  zones: number[][];
-  /** Color variance across zones: lower = more uniform = preferred */
-  variance: number;
-  description: string;
-  obtainMethod: string;
+  /** 主题色列表：按 alpha 加权可见面积占比从高到低排列。 */
+  themeColors: Array<{
+    rgb: [number, number, number];
+    hex: string;
+    hsl: [number, number, number];
+    oklch: [number, number, number];
+    ratio: number;
+  }>;
 }
 
 export interface FilterState {
@@ -22,6 +22,8 @@ export interface FilterState {
   element: string;
   search: string;
   hideDisabled: boolean;
+  /** 是否启用纪行名片（默认关闭，大部分玩家未购买） */
+  enableBattlepass: boolean;
 }
 
 export interface GradientPreset {
