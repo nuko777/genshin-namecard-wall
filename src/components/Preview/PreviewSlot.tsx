@@ -6,6 +6,7 @@ interface PreviewSlotProps {
   hash: string | null;
   colorMap: Map<string, Namecard>;
   didDropRef: React.MutableRefObject<boolean>;
+  endpoint?: boolean;
   onDrop: (index: number, hash: string) => void;
   onSwap: (a: number, b: number) => void;
   onRemove: (index: number) => void;
@@ -16,6 +17,7 @@ export default function PreviewSlot({
   hash,
   colorMap,
   didDropRef,
+  endpoint = false,
   onDrop,
   onSwap,
   onRemove,
@@ -76,7 +78,7 @@ export default function PreviewSlot({
 
   return (
     <div
-      className={`preview-slot ${dragOver ? 'preview-slot--over' : ''}`}
+      className={`preview-slot ${dragOver ? 'preview-slot--over' : ''} ${endpoint ? 'preview-slot--endpoint' : ''}`}
       draggable={!!hash}
       onDragStart={handleDragStart}
       onDragOver={handleDragOver}

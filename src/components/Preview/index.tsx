@@ -109,6 +109,8 @@ export default function Preview({
         <PreviewGrid
           slots={slots}
           colorMap={colorMap}
+          fillMode={fillMode}
+          direction={direction}
           onDrop={onDrop}
           onSwap={onSwap}
           onRemove={onRemove}
