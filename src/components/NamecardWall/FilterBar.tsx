@@ -21,11 +21,12 @@ const REGION_OPTIONS = [
   { label: '纳塔', value: '纳塔' },
   { label: '挪德卡莱', value: '挪德卡莱' },
   { label: '至冬', value: '至冬' },
+  { label: '其他', value: '其他' },
 ];
 
 const THEME_OPTIONS = [
   { label: '地区', value: 'region', children: REGION_OPTIONS },
-  { label: '元素', value: 'character', children: ELEMENT_OPTIONS },
+  { label: '元素', value: 'element', children: ELEMENT_OPTIONS },
   { label: '纪行', value: 'battlepass' },
   { label: '成就', value: 'achievement' },
   { label: '活动', value: 'event' },
@@ -43,9 +44,16 @@ interface FilterBarProps {
 export default function FilterBar({ filter, count, total, onChange }: FilterBarProps) {
   const [localSearch, setLocalSearch] = useState(filter.search);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
-  const categoryValue = filter.theme
-    ? [filter.theme, filter.theme === 'character' ? filter.element : filter.region].filter(Boolean)
-    : undefined;
+  const categoryValue = (() => {
+    if (!filter.theme) return undefined;
+    // 地区 / 元素 统一走 theme=character，通过 region/element 字段区分
+    if (filter.theme === 'character') {
+      if (filter.region) return ['region', filter.region];
+      if (filter.element) return ['element', filter.element];
+      return ['character'];
+    }
+    return [filter.theme];
+  })();
 
   // Sync external filter.search changes (e.g. reset) to local input
   useEffect(() => {
@@ -69,11 +77,14 @@ export default function FilterBar({ filter, count, total, onChange }: FilterBarP
       return;
     }
 
-    const [theme = '', secondary = ''] = value.map(String);
+    const [top = '', secondary = ''] = value.map(String);
+    // 地区 / 元素 统一映射为 theme=character，通过 region/element 字段区分
+    // 地区 / 元素 统一映射为 theme=character，通过 region/element 字段区分
+    const isRegionOrElement = top === 'region' || top === 'element';
     onChange({
-      theme,
-      element: theme === 'character' ? secondary : '',
-      region: theme === 'region' ? secondary : '',
+      theme: isRegionOrElement ? 'character' : top,
+      element: top === 'element' ? secondary : '',
+      region: top === 'region' ? secondary : '',
     });
   };
 
@@ -101,6 +112,7 @@ export default function FilterBar({ filter, count, total, onChange }: FilterBarP
           changeOnSelect
           options={THEME_OPTIONS}
           onChange={handleCategoryChange}
+          displayRender={(labels) => categoryValue?.[0] === 'character' ? '角色' : labels.join(' / ')}
         />
         <Checkbox
           checked={filter.hideDisabled}

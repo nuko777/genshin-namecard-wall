@@ -1,4 +1,4 @@
-export type NamecardTheme = '' | 'region' | 'character' | 'battlepass' | 'achievement' | 'event' | 'reputation' | 'other';
+export type NamecardTheme = '' | 'character' | 'battlepass' | 'achievement' | 'event' | 'reputation' | 'other';
 
 export interface Namecard {
   name: string;
