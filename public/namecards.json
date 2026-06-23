@@ -1558,7 +1558,7 @@
   {
     "name": "蒙德·英名",
     "hash": "d9e468f",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1624,7 +1624,7 @@
   {
     "name": "蒙德·祝愿",
     "hash": "2bffaae",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1671,7 +1671,7 @@
   {
     "name": "璃月·千帆",
     "hash": "fa4c7f4",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1699,7 +1699,7 @@
   {
     "name": "璃月·云间",
     "hash": "905d902",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3373,7 +3373,7 @@
   {
     "name": "稻妻·雷电之纹",
     "hash": "c8bdaab",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3420,7 +3420,7 @@
   {
     "name": "稻妻·神里之纹",
     "hash": "690e49e",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -5677,7 +5677,7 @@
   {
     "name": "须弥·照览",
     "hash": "bc586e7",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -5743,7 +5743,7 @@
   {
     "name": "须弥·正明",
     "hash": "93e8f90",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7652,7 +7652,7 @@
   {
     "name": "枫丹·奇械",
     "hash": "acb3409",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7680,7 +7680,7 @@
   {
     "name": "枫丹·新闻",
     "hash": "76cf773",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -9874,7 +9874,7 @@
   {
     "name": "纳塔·神军",
     "hash": "d244a95",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
@@ -9959,7 +9959,7 @@
   {
     "name": "纳塔·炎龙",
     "hash": "04908ab",
-    "theme": "",
+    "theme": "reputation",
     "region": "",
     "element": "",
     "themeColors": [
