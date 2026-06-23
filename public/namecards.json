@@ -1895,7 +1895,7 @@
   {
     "name": "庆典·无相",
     "hash": "aa2175e",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2102,7 +2102,7 @@
   {
     "name": "庆典·灯昼",
     "hash": "9ce11c9",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2168,7 +2168,7 @@
   {
     "name": "庆典·棋谭",
     "hash": "2a270ca",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2290,7 +2290,7 @@
   {
     "name": "庆典·盛宴",
     "hash": "33795f9",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2337,7 +2337,7 @@
   {
     "name": "庆典·光鳞",
     "hash": "2e25ea3",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2384,7 +2384,7 @@
   {
     "name": "庆典·慧果",
     "hash": "ffc5a1f",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2431,7 +2431,7 @@
   {
     "name": "庆典·躲猫",
     "hash": "f8100a0",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2883,7 +2883,7 @@
   {
     "name": "庆典·浩瀚",
     "hash": "1958cd5",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2949,7 +2949,7 @@
   {
     "name": "庆典·魔球",
     "hash": "1143968",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3015,7 +3015,7 @@
   {
     "name": "庆典·斗剧",
     "hash": "96212ce",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3702,7 +3702,7 @@
   {
     "name": "庆典·妙算",
     "hash": "bbd8f77",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4097,7 +4097,7 @@
   {
     "name": "庆典·倾耳",
     "hash": "d5b66b4",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4144,7 +4144,7 @@
   {
     "name": "庆典·一揆",
     "hash": "90fe9fa",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4642,7 +4642,7 @@
   {
     "name": "庆典·觥筹",
     "hash": "83abbca",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -6599,7 +6599,7 @@
   {
     "name": "庆典·岫云",
     "hash": "97ad159",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7934,7 +7934,7 @@
   {
     "name": "庆典·奏雅",
     "hash": "ac8803c",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -9648,7 +9648,7 @@
   {
     "name": "庆典·盛宴·其二",
     "hash": "21b7352",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10336,7 +10336,7 @@
   {
     "name": "庆典·甘脆",
     "hash": "abe4029",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -11221,7 +11221,7 @@
   {
     "name": "庆典·炙热",
     "hash": "9282e82",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -11823,7 +11823,7 @@
   {
     "name": "庆典·宴飨",
     "hash": "a30be2d",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -12143,7 +12143,7 @@
   {
     "name": "庆典·鲔米",
     "hash": "edda801",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -12538,7 +12538,7 @@
   {
     "name": "庆典·至味",
     "hash": "f3059fa",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
@@ -12877,7 +12877,7 @@
   {
     "name": "庆典·梦读",
     "hash": "d4ea53a",
-    "theme": "",
+    "theme": "event",
     "region": "",
     "element": "",
     "themeColors": [
