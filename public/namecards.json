@@ -78,8 +78,8 @@
     "name": "安柏·兔兔",
     "hash": "44e837f",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -125,8 +125,8 @@
     "name": "可莉·爆弹",
     "hash": "d5c1d92",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -172,8 +172,8 @@
     "name": "迪卢克·燃烧",
     "hash": "26cd2ee",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -219,8 +219,8 @@
     "name": "雷泽·奔狼",
     "hash": "671849f",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -266,8 +266,8 @@
     "name": "温迪·天青",
     "hash": "f25214e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -313,8 +313,8 @@
     "name": "琴·风向",
     "hash": "b3f876e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -341,8 +341,8 @@
     "name": "芭芭拉·流淌",
     "hash": "7edf111",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -369,8 +369,8 @@
     "name": "凯亚·孔雀",
     "hash": "90ad801",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -397,8 +397,8 @@
     "name": "丽莎·沙漏",
     "hash": "778cffe",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -444,8 +444,8 @@
     "name": "砂糖·创生",
     "hash": "4fcc37a",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -491,8 +491,8 @@
     "name": "菲谢尔·夜鸦",
     "hash": "a4bf76e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -519,8 +519,8 @@
     "name": "诺艾尔·守护",
     "hash": "4589902",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -547,8 +547,8 @@
     "name": "莫娜·天星",
     "hash": "a3e3b77",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -594,8 +594,8 @@
     "name": "班尼特·认可",
     "hash": "0ce7cd1",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -641,8 +641,8 @@
     "name": "香菱·出锅",
     "hash": "21955ab",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -669,8 +669,8 @@
     "name": "行秋·雨虹",
     "hash": "753d2d1",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -716,8 +716,8 @@
     "name": "七七·冷藏",
     "hash": "08bef0c",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -744,8 +744,8 @@
     "name": "刻晴·雷楔",
     "hash": "0b88110",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -1212,8 +1212,8 @@
     "name": "凝光·凤仪",
     "hash": "b412afa",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -1240,8 +1240,8 @@
     "name": "北斗·拔锚",
     "hash": "3440fd8",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -1268,8 +1268,8 @@
     "name": "重云·灵刃",
     "hash": "4d9ea4e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -1409,8 +1409,8 @@
     "name": "迪奥娜·呜喵",
     "hash": "16312e7",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -1437,8 +1437,8 @@
     "name": "钟离·天星",
     "hash": "092705d",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -1465,8 +1465,8 @@
     "name": "辛焱·唱罢",
     "hash": "257d90e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -1512,8 +1512,8 @@
     "name": "公子·魔装",
     "hash": "50543d3",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "至冬",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -1784,8 +1784,8 @@
     "name": "甘雨·麟迹",
     "hash": "6da1c6b",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -1812,8 +1812,8 @@
     "name": "阿贝多·阳花",
     "hash": "d2e4621",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -1943,8 +1943,8 @@
     "name": "魈·傩面",
     "hash": "b280f72",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -1990,8 +1990,8 @@
     "name": "胡桃·安神",
     "hash": "a07bf18",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -2216,8 +2216,8 @@
     "name": "罗莎莉亚·苦役",
     "hash": "83cdb96",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -2517,8 +2517,8 @@
     "name": "烟绯·公正",
     "hash": "13d2954",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -2564,8 +2564,8 @@
     "name": "优菈·冰印",
     "hash": "d3e26f4",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -2724,8 +2724,8 @@
     "name": "枫原万叶·秋山椛狩",
     "hash": "5cb2d97",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -3195,8 +3195,8 @@
     "name": "神里绫华·扇子",
     "hash": "159a4b5",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -3280,8 +3280,8 @@
     "name": "宵宫·琉金火花",
     "hash": "4f99a41",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -3327,8 +3327,8 @@
     "name": "早柚·不倒貉貉",
     "hash": "bf02873",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -3750,8 +3750,8 @@
     "name": "雷电将军·开眼",
     "hash": "9a99ae6",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -3816,8 +3816,8 @@
     "name": "珊瑚宫心海·渊",
     "hash": "eb381d0",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -3863,8 +3863,8 @@
     "name": "九条裟罗·天狗",
     "hash": "bf8deda",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -3910,8 +3910,8 @@
     "name": "埃洛伊·曙光记",
     "hash": "787699e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "其他",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -4173,8 +4173,8 @@
     "name": "托马·炎袖",
     "hash": "a26e5eb",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -4295,8 +4295,8 @@
     "name": "五郎·悠犬",
     "hash": "b01fa50",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -4323,8 +4323,8 @@
     "name": "一斗·鬼颜",
     "hash": "9968a02",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -4436,8 +4436,8 @@
     "name": "申鹤·栉掠",
     "hash": "a57e4c2",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -4483,8 +4483,8 @@
     "name": "云堇·对韵",
     "hash": "be0ee10",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -4690,8 +4690,8 @@
     "name": "八重神子·梦狐",
     "hash": "4254d5b",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -4765,8 +4765,8 @@
     "name": "神里绫人·涟漪",
     "hash": "352750a",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -5000,8 +5000,8 @@
     "name": "夜兰·一掷",
     "hash": "87e0192",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -5047,8 +5047,8 @@
     "name": "久岐忍·络",
     "hash": "fe2bfb9",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -5141,8 +5141,8 @@
     "name": "鹿野院平藏·鞠毬",
     "hash": "9627b38",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -5235,8 +5235,8 @@
     "name": "提纳里·沐露",
     "hash": "770a796",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -5320,8 +5320,8 @@
     "name": "柯莱·豹蔚",
     "hash": "c98cef6",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -5367,8 +5367,8 @@
     "name": "多莉·魔灯",
     "hash": "8054d7d",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -5838,8 +5838,8 @@
     "name": "赛诺·幽缄",
     "hash": "999df33",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -5904,8 +5904,8 @@
     "name": "坎蒂丝·苍鹭",
     "hash": "681f476",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -5951,8 +5951,8 @@
     "name": "妮露·莲舞",
     "hash": "4cb2ad8",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -6177,8 +6177,8 @@
     "name": "纳西妲·仰月",
     "hash": "f2a2b9a",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -6224,8 +6224,8 @@
     "name": "莱依拉·昼梦",
     "hash": "40a4cef",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -6318,8 +6318,8 @@
     "name": "流浪者·浮歌",
     "hash": "91b3dd6",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -6346,8 +6346,8 @@
     "name": "珐露珊·封秘",
     "hash": "653a4b0",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -6506,8 +6506,8 @@
     "name": "艾尔海森·诲明",
     "hash": "d9db994",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -6553,8 +6553,8 @@
     "name": "瑶瑶·月桂",
     "hash": "c446de8",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -6741,8 +6741,8 @@
     "name": "迪希雅·净焰",
     "hash": "42f72a2",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -6788,8 +6788,8 @@
     "name": "米卡·索引",
     "hash": "e9c0521",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -6882,8 +6882,8 @@
     "name": "白术·祛风",
     "hash": "50facad",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -6929,8 +6929,8 @@
     "name": "卡维·穹庭",
     "hash": "bdc52e7",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -7249,8 +7249,8 @@
     "name": "绮良良·猫箱",
     "hash": "5b2df0c",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -7409,8 +7409,8 @@
     "name": "林尼·弄假",
     "hash": "9ef127f",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -7475,8 +7475,8 @@
     "name": "琳妮特·成真",
     "hash": "40421f9",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -7522,8 +7522,8 @@
     "name": "菲米尼·行进",
     "hash": "eab0b22",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -7775,8 +7775,8 @@
     "name": "那维莱特·流澜",
     "hash": "b636fe4",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -7822,8 +7822,8 @@
     "name": "莱欧斯利·缄锁",
     "hash": "09584e5",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -8057,8 +8057,8 @@
     "name": "芙宁娜·欢宴",
     "hash": "9b163b8",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -8104,8 +8104,8 @@
     "name": "夏洛蒂·独家",
     "hash": "992c08c",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -8226,8 +8226,8 @@
     "name": "娜维娅·刺玫",
     "hash": "8558566",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -8273,8 +8273,8 @@
     "name": "夏沃蕾·贰型",
     "hash": "d95efcb",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -8367,8 +8367,8 @@
     "name": "闲云·鹤云",
     "hash": "2a14888",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -8452,8 +8452,8 @@
     "name": "嘉明·文仔",
     "hash": "5d166af",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -8782,8 +8782,8 @@
     "name": "千织·展袖",
     "hash": "2a01da5",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -8914,8 +8914,8 @@
     "name": "阿蕾奇诺·法度",
     "hash": "9d66269",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "至冬",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -9206,8 +9206,8 @@
     "name": "克洛琳德·取人",
     "hash": "adb3a29",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -9253,8 +9253,8 @@
     "name": "希格雯·疗法",
     "hash": "41110ae",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -9319,8 +9319,8 @@
     "name": "赛索斯·跋灵",
     "hash": "8244e7f",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "须弥",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -9555,8 +9555,8 @@
     "name": "艾梅莉埃·后调",
     "hash": "5e7e0f1",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -9696,8 +9696,8 @@
     "name": "基尼奇·阿乔",
     "hash": "c153be9",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -9781,8 +9781,8 @@
     "name": "玛拉妮·鲨鲨",
     "hash": "381946d",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -9828,8 +9828,8 @@
     "name": "卡齐娜·转转",
     "hash": "16fea33",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -10365,8 +10365,8 @@
     "name": "希诺宁·律动",
     "hash": "122ef94",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -10497,8 +10497,8 @@
     "name": "恰斯卡·全弹",
     "hash": "cf45ddb",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -10563,8 +10563,8 @@
     "name": "欧洛伦·夜翳",
     "hash": "03504af",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -10789,8 +10789,8 @@
     "name": "玛薇卡·日冕",
     "hash": "950d5bb",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -10855,8 +10855,8 @@
     "name": "茜特菈莉·白星",
     "hash": "424b985",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -10902,8 +10902,8 @@
     "name": "蓝砚·银燕",
     "hash": "581de19",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -11156,8 +11156,8 @@
     "name": "梦见月瑞希·噩喰",
     "hash": "911666e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "稻妻",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -11335,8 +11335,8 @@
     "name": "瓦雷莎·力源",
     "hash": "a6ba10a",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -11363,8 +11363,8 @@
     "name": "伊安珊·不懈",
     "hash": "3322492",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -11551,8 +11551,8 @@
     "name": "爱可菲·韵味",
     "hash": "591ad85",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "枫丹",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -11598,8 +11598,8 @@
     "name": "伊法·哥们",
     "hash": "23cdd22",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "纳塔",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -11730,8 +11730,8 @@
     "name": "丝柯克·孤影",
     "hash": "1a923de",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "其他",
+    "element": "冰",
     "themeColors": [
       {
         "rgb": [
@@ -11777,8 +11777,8 @@
     "name": "塔利雅·天职",
     "hash": "1804097",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -11918,8 +11918,8 @@
     "name": "伊涅芙·指令",
     "hash": "c2cde28",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -12191,8 +12191,8 @@
     "name": "菈乌玛·枝角",
     "hash": "d4e168e",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -12238,8 +12238,8 @@
     "name": "菲林斯·誓灯",
     "hash": "93c5186",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "雷",
     "themeColors": [
       {
         "rgb": [
@@ -12285,8 +12285,8 @@
     "name": "爱诺·哎鸭",
     "hash": "8c9d8c6",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -12605,8 +12605,8 @@
     "name": "奈芙尔·秘闻",
     "hash": "f2eb3e1",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "草",
     "themeColors": [
       {
         "rgb": [
@@ -12718,8 +12718,8 @@
     "name": "杜林·曜心",
     "hash": "f349a21",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "火",
     "themeColors": [
       {
         "rgb": [
@@ -12765,8 +12765,8 @@
     "name": "雅珂达·帮手",
     "hash": "af6fa55",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -12944,8 +12944,8 @@
     "name": "哥伦比娅·几时",
     "hash": "b5439e8",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "水",
     "themeColors": [
       {
         "rgb": [
@@ -12991,8 +12991,8 @@
     "name": "兹白·烟景",
     "hash": "1c231bf",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "璃月",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -13057,8 +13057,8 @@
     "name": "叶洛亚·魇莺",
     "hash": "98e77aa",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "岩",
     "themeColors": [
       {
         "rgb": [
@@ -13264,8 +13264,8 @@
     "name": "法尔伽·头狼",
     "hash": "ee53ee7",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "风",
     "themeColors": [
       {
         "rgb": [
@@ -13358,8 +13358,8 @@
     "name": "莉奈娅·娑响",
     "hash": "73feb57",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "挪德卡莱",
+    "element": "岩",
     "themeColors": []
   },
   {
@@ -13390,8 +13390,8 @@
     "name": "尼可·天阶",
     "hash": "2eb9710",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "其他",
+    "element": "火",
     "themeColors": []
   },
   {
@@ -13406,8 +13406,8 @@
     "name": "布伦妮·制裁",
     "hash": "5d43366",
     "theme": "character",
-    "region": "",
-    "element": "",
+    "region": "蒙德",
+    "element": "风",
     "themeColors": []
   },
   {
