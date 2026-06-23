@@ -2,7 +2,7 @@
   {
     "name": "原神·印象",
     "hash": "6eb6aaa",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1867,7 +1867,7 @@
   {
     "name": "忍冬·古树",
     "hash": "3a9a296",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3081,7 +3081,7 @@
   {
     "name": "稻妻·神樱",
     "hash": "aad6c00",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4811,7 +4811,7 @@
   {
     "name": "流明·辉石",
     "hash": "4bed3bc",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7107,7 +7107,7 @@
   {
     "name": "须弥·大梦",
     "hash": "52c633f",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7154,7 +7154,7 @@
   {
     "name": "须弥·甘露",
     "hash": "f077c2e",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -8564,7 +8564,7 @@
   {
     "name": "沉玉·投珑",
     "hash": "47447d9",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -8715,7 +8715,7 @@
   {
     "name": "专辑·闪耀的群星",
     "hash": "62544cb",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -9092,7 +9092,7 @@
   {
     "name": "枫丹·露泉",
     "hash": "3b8842b",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -11983,7 +11983,7 @@
   {
     "name": "纳塔·煅轮",
     "hash": "3e15e93",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -12350,7 +12350,7 @@
   {
     "name": "挪德卡莱·月色",
     "hash": "546a816",
-    "theme": "",
+    "theme": "other",
     "region": "",
     "element": "",
     "themeColors": [
@@ -13353,5 +13353,69 @@
         "ratio": 0.121
       }
     ]
+  },
+  {
+    "name": "莉奈娅·娑响",
+    "hash": "73feb57",
+    "theme": "",
+    "region": "",
+    "element": "",
+    "themeColors": []
+  },
+  {
+    "name": "蒙德·望楼",
+    "hash": "415b996",
+    "theme": "",
+    "region": "",
+    "element": "",
+    "themeColors": []
+  },
+  {
+    "name": "空殿·满忆",
+    "hash": "8db4895",
+    "theme": "other",
+    "region": "",
+    "element": "",
+    "themeColors": []
+  },
+  {
+    "name": "纪行·逢归",
+    "hash": "9743604",
+    "theme": "battlepass",
+    "region": "",
+    "element": "",
+    "themeColors": []
+  },
+  {
+    "name": "尼可·天阶",
+    "hash": "2eb9710",
+    "theme": "",
+    "region": "",
+    "element": "",
+    "themeColors": []
+  },
+  {
+    "name": "洛恩·仁蔼",
+    "hash": "b548109",
+    "theme": "",
+    "region": "",
+    "element": "",
+    "themeColors": []
+  },
+  {
+    "name": "布伦妮·制裁",
+    "hash": "5d43366",
+    "theme": "",
+    "region": "",
+    "element": "",
+    "themeColors": []
+  },
+  {
+    "name": "纪行·赠绮",
+    "hash": "1a10ac2",
+    "theme": "battlepass",
+    "region": "",
+    "element": "",
+    "themeColors": []
   }
 ]
