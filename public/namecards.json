@@ -790,7 +790,7 @@
   {
     "name": "成就·游遍",
     "hash": "539880d",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -837,7 +837,7 @@
   {
     "name": "成就·殊技",
     "hash": "d1e79fc",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -865,7 +865,7 @@
   {
     "name": "成就·侠行",
     "hash": "52c3ae6",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -893,7 +893,7 @@
   {
     "name": "蒙德·风吟",
     "hash": "0bc52ec",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -940,7 +940,7 @@
   {
     "name": "璃月·岩寂",
     "hash": "d343cf6",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -968,7 +968,7 @@
   {
     "name": "成就·虹色",
     "hash": "28dde63",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -996,7 +996,7 @@
   {
     "name": "成就·强弓",
     "hash": "0772c89",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1024,7 +1024,7 @@
   {
     "name": "成就·挑战",
     "hash": "950d97f",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1052,7 +1052,7 @@
   {
     "name": "成就·深秘",
     "hash": "05021b7",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1099,7 +1099,7 @@
   {
     "name": "成就·山民",
     "hash": "b41b6a7",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1127,7 +1127,7 @@
   {
     "name": "成就·雪乡",
     "hash": "28e02df",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1155,7 +1155,7 @@
   {
     "name": "成就·合扇",
     "hash": "9d53de6",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1183,7 +1183,7 @@
   {
     "name": "成就·相逢",
     "hash": "21c383e",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1295,7 +1295,7 @@
   {
     "name": "成就·挑战·其二",
     "hash": "319d887",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1727,7 +1727,7 @@
   {
     "name": "成就·挑战·其三",
     "hash": "7b69235",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -1755,7 +1755,7 @@
   {
     "name": "成就·雪峰",
     "hash": "3debf97",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2657,7 +2657,7 @@
   {
     "name": "成就·壶歌",
     "hash": "973059e",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -2817,7 +2817,7 @@
   {
     "name": "成就·旅居",
     "hash": "485869e",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3448,7 +3448,7 @@
   {
     "name": "成就·门扉",
     "hash": "8e839d5",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3476,7 +3476,7 @@
   {
     "name": "成就·遍历",
     "hash": "3437d49",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3523,7 +3523,7 @@
   {
     "name": "成就·石龙",
     "hash": "1f7ec76",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3589,7 +3589,7 @@
   {
     "name": "成就·繁花",
     "hash": "13f7a38",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -3655,7 +3655,7 @@
   {
     "name": "稻妻·九条之纹",
     "hash": "ee3e490",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4022,7 +4022,7 @@
   {
     "name": "稻妻·珊瑚宫之纹",
     "hash": "849c0cc",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4069,7 +4069,7 @@
   {
     "name": "成就·敲针",
     "hash": "c3cbcc6",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4247,7 +4247,7 @@
   {
     "name": "稻妻·鹫羽",
     "hash": "444a14f",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4529,7 +4529,7 @@
   {
     "name": "稻妻·常世",
     "hash": "46122df",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4858,7 +4858,7 @@
   {
     "name": "成就·雷音",
     "hash": "2851a94",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -4905,7 +4905,7 @@
   {
     "name": "成就·层岩",
     "hash": "dcb1eeb",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -5498,7 +5498,7 @@
   {
     "name": "成就·漫行",
     "hash": "6a4b1ce",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -5583,7 +5583,7 @@
   {
     "name": "成就·逢缘",
     "hash": "bf975e3",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -5630,7 +5630,7 @@
   {
     "name": "须弥·瑶林",
     "hash": "29af41b",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -5997,7 +5997,7 @@
   {
     "name": "成就·七芒",
     "hash": "0b196ad",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -6063,7 +6063,7 @@
   {
     "name": "须弥·踏沙",
     "hash": "be4279e",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -6091,7 +6091,7 @@
   {
     "name": "成就·镜梦",
     "hash": "0801679",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -6392,7 +6392,7 @@
   {
     "name": "成就·七圣",
     "hash": "305417c",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -6693,7 +6693,7 @@
   {
     "name": "须弥·砂岚",
     "hash": "078b3c3",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -6975,7 +6975,7 @@
   {
     "name": "成就·万种",
     "hash": "da77211",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7022,7 +7022,7 @@
   {
     "name": "成就·槿暮",
     "hash": "d40a88a",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7549,7 +7549,7 @@
   {
     "name": "枫丹·审判",
     "hash": "b618dcd",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7577,7 +7577,7 @@
   {
     "name": "成就·轨迹",
     "hash": "4a921c0",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7624,7 +7624,7 @@
   {
     "name": "成就·游涉",
     "hash": "d312530",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -7962,7 +7962,7 @@
   {
     "name": "成就·永续",
     "hash": "7240fc7",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -8028,7 +8028,7 @@
   {
     "name": "枫丹·罚赎",
     "hash": "020d44a",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -8150,7 +8150,7 @@
   {
     "name": "枫丹·浑然",
     "hash": "b68b388",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -8517,7 +8517,7 @@
   {
     "name": "成就·仙谷",
     "hash": "7894471",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -8960,7 +8960,7 @@
   {
     "name": "枫丹·调律",
     "hash": "f4da28f",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -9045,7 +9045,7 @@
   {
     "name": "成就·掣鲸",
     "hash": "64fd970",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -9384,7 +9384,7 @@
   {
     "name": "成就·诗页",
     "hash": "09549c5",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10025,7 +10025,7 @@
   {
     "name": "成就·尽头",
     "hash": "d95ad5c",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10072,7 +10072,7 @@
   {
     "name": "成就·喵运",
     "hash": "888b268",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10157,7 +10157,7 @@
   {
     "name": "纳塔·归火",
     "hash": "aef6646",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10204,7 +10204,7 @@
   {
     "name": "成就·夜主",
     "hash": "da2e02e",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10609,7 +10609,7 @@
   {
     "name": "纳塔·空梦",
     "hash": "d8fc820",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10675,7 +10675,7 @@
   {
     "name": "成就·战意",
     "hash": "3057812",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10948,7 +10948,7 @@
   {
     "name": "成就·览尽",
     "hash": "a929661",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -10995,7 +10995,7 @@
   {
     "name": "成就·灼燃",
     "hash": "8423730",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -11042,7 +11042,7 @@
   {
     "name": "成就·乐集",
     "hash": "be208c3",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -11409,7 +11409,7 @@
   {
     "name": "纳塔·眬瞳",
     "hash": "6f24658",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -11456,7 +11456,7 @@
   {
     "name": "成就·寂宁",
     "hash": "8456f34",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -12030,7 +12030,7 @@
   {
     "name": "纳塔·巡风",
     "hash": "9f956bd",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -12397,7 +12397,7 @@
   {
     "name": "挪德卡莱·圣域",
     "hash": "dd9d494",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -12444,7 +12444,7 @@
   {
     "name": "成就·久别",
     "hash": "a9230a2",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -13103,7 +13103,7 @@
   {
     "name": "成就·眺远",
     "hash": "dfadfa9",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -13169,7 +13169,7 @@
   {
     "name": "挪德卡莱·长灯",
     "hash": "c3f53f2",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": [
@@ -13365,7 +13365,7 @@
   {
     "name": "蒙德·望楼",
     "hash": "415b996",
-    "theme": "",
+    "theme": "achievement",
     "region": "",
     "element": "",
     "themeColors": []
