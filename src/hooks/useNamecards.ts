@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import type { Namecard, FilterState } from '../types';
+import { fuzzyMatch } from '../utils/fuzzyMatch';
 
 export function useNamecards() {
   const [namecards, setNamecards] = useState<Namecard[]>([]);
@@ -36,14 +37,29 @@ export function useNamecards() {
   }, [namecards]);
 
   const filteredNamecards = useMemo<Namecard[]>(() => {
-    return namecards.filter(c => {
-      if (!filter.enableBattlepass && c.theme === 'battlepass') return false;
-      if (filter.theme && c.theme !== filter.theme) return false;
-      if (filter.region && c.region !== filter.region) return false;
-      if (filter.element && c.element !== filter.element) return false;
-      if (filter.search && !c.name.toLowerCase().includes(filter.search.toLowerCase())) return false;
-      return true;
-    });
+    const scored: Array<{ card: Namecard; score: number }> = [];
+
+    for (const c of namecards) {
+      if (!filter.enableBattlepass && c.theme === 'battlepass') continue;
+      if (filter.theme && c.theme !== filter.theme) continue;
+      if (filter.region && c.region !== filter.region) continue;
+      if (filter.element && c.element !== filter.element) continue;
+
+      if (filter.search) {
+        const score = fuzzyMatch(filter.search, c.name);
+        if (!score) continue;
+        scored.push({ card: c, score });
+      } else {
+        scored.push({ card: c, score: 0 });
+      }
+    }
+
+    // Sort by fuzzy match score descending when a search query is active
+    if (filter.search) {
+      scored.sort((a, b) => b.score - a.score);
+    }
+
+    return scored.map(s => s.card);
   }, [namecards, filter]);
 
   // 匹配池：受分类筛选影响，但不受搜索影响，避免按名称查找时预览整盘洗牌。

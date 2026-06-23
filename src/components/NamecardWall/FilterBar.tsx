@@ -26,9 +26,11 @@ const REGION_OPTIONS = [
 const THEME_OPTIONS = [
   { label: '地区', value: 'region', children: REGION_OPTIONS },
   { label: '元素', value: 'character', children: ELEMENT_OPTIONS },
-  { label: '成就', value: 'achievement' },
   { label: '纪行', value: 'battlepass' },
+  { label: '成就', value: 'achievement' },
   { label: '活动', value: 'event' },
+  { label: '声望', value: 'reputation' },
+  { label: '其他', value: 'other' },
 ];
 
 interface FilterBarProps {
@@ -79,7 +81,7 @@ export default function FilterBar({ filter, count, total, onChange }: FilterBarP
     <div className="filter-bar">
       <Input.Search
         size="small"
-        placeholder="搜索名片名称..."
+        placeholder="模糊搜索名片名称..."
         allowClear
         value={localSearch}
         onChange={e => handleSearchChange(e.target.value)}
